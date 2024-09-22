@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-iv^p)@9#)y_yemi&8tia3(jg_ga6an$aqrifv^1s-5c3u#0)u3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "https://house-hold-front-end.vercel.app/"]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  
@@ -98,21 +98,21 @@ WSGI_APPLICATION = 'Household_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://householddb_user:95Rci1uZ7Bti4osauZvfg33QBTwcxv1c@dpg-csn0g108fa8c73adcreg-a.singapore-postgres.render.com/householddb',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default='postgresql://householddb_user:95Rci1uZ7Bti4osauZvfg33QBTwcxv1c@dpg-csn0g108fa8c73adcreg-a.singapore-postgres.render.com/householddb',
+#         conn_max_age=600
+#     )
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -169,8 +169,16 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 
 
+
+# Additional settings for Whitenoise (for serving static files)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
