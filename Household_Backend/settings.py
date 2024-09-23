@@ -12,9 +12,11 @@ DEBUG = True
 ALLOWED_HOSTS = ["*", "https://household-backend-a4k7.onrender.com/"]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://house-hold-front-end.vercel.app/",  
+    'https://house-hold-front-end.vercel.app',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
