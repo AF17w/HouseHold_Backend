@@ -9,10 +9,10 @@ SECRET_KEY = 'django-insecure-iv^p)@9#)y_yemi&8tia3(jg_ga6an$aqrifv^1s-5c3u#0)u3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*", "https://house-hold-front-end.vercel.app/"]
+ALLOWED_HOSTS = ["*", "https://household-backend-a4k7.onrender.com/"]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  
+    "https://house-hold-front-end.vercel.app/",  
 ]
 
 
