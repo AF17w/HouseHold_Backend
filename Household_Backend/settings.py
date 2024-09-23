@@ -100,21 +100,21 @@ WSGI_APPLICATION = 'Household_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # DATABASES = {
-#     'default': dj_database_url.config(
-#         # Replace this value with your local database's connection string.
-#         default='postgresql://householddb_user:95Rci1uZ7Bti4osauZvfg33QBTwcxv1c@dpg-csn0g108fa8c73adcreg-a.singapore-postgres.render.com/householddb',
-#         # conn_max_age=600
-#     )
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+
+DATABASES = {
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://householddb_user:95Rci1uZ7Bti4osauZvfg33QBTwcxv1c@dpg-csn0g108fa8c73adcreg-a.singapore-postgres.render.com/householddb',
+        # conn_max_age=600
+    )
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [
