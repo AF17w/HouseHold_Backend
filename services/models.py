@@ -32,7 +32,7 @@ class Service(models.Model):
 	categories= models.ForeignKey(Categorie, on_delete=models.CASCADE)
 	discription=models.TextField(max_length=800)
 	price=models.DecimalField( max_digits=5, decimal_places=2)
-	image= models.ImageField(upload_to='')
+	image= models.ImageField(upload_to='services/media/')
 
 	def __str__(self):
 		return self.service_title

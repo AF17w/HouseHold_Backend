@@ -100,21 +100,15 @@ WSGI_APPLICATION = 'Household_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgresql://householddb_user:95Rci1uZ7Bti4osauZvfg33QBTwcxv1c@dpg-csn0g108fa8c73adcreg-a.singapore-postgres.render.com/householddb',
+        conn_max_age=600
+    )
 }
-
-
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         # Replace this value with your local database's connection string.
-#         default='postgresql://householddb_user:95Rci1uZ7Bti4osauZvfg33QBTwcxv1c@dpg-csn0g108fa8c73adcreg-a.singapore-postgres.render.com/householddb',
-#         conn_max_age=600
-#     )
-# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -148,27 +142,23 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = ''
 
+if not DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'dev.ashraf.uddin@gmail.com'
-EMAIL_HOST_PASSWORD = 'fmiwshslvzodhssa'
